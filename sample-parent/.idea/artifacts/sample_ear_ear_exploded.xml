@@ -1,0 +1,33 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-ear" name="sample-ear:ear exploded">
+    <output-path>$PROJECT_DIR$/sample-ear/target/sampleapp</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="sample-ear/javaeeApplication/JavaEE" />
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/sample-ear/target/sampleapp/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="archive" name="sample-web-0.0.1-SNAPSHOT.war">
+        <element id="directory" name="WEB-INF">
+          <element id="directory" name="classes">
+            <element id="module-output" name="sample-web" />
+          </element>
+        </element>
+        <element id="directory" name="META-INF">
+          <element id="file-copy" path="$PROJECT_DIR$/sample-web/target/sample-web/META-INF/MANIFEST.MF" />
+        </element>
+        <element id="javaee-facet-resources" facet="sample-web/web/Web" />
+      </element>
+      <element id="archive" name="sample-services-0.0.1-SNAPSHOT.jar">
+        <element id="artifact" artifact-name="sample-services:ejb exploded" />
+      </element>
+      <element id="directory" name="lib">
+        <element id="archive" name="sample-domain-0.0.1-SNAPSHOT.jar">
+          <element id="artifact" artifact-name="sample-domain:ejb exploded" />
+        </element>
+        <element id="library" level="project" name="Maven: javax:javaee-api:7.0" />
+        <element id="library" level="project" name="Maven: com.sun.mail:javax.mail:1.5.0" />
+        <element id="library" level="project" name="Maven: javax.activation:activation:1.1" />
+      </element>
+    </root>
+  </artifact>
+</component>

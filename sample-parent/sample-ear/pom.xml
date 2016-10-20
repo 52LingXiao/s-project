@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+		 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<parent>
+		<artifactId>sample-parent</artifactId>
+		<groupId>gr.javapapo</groupId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<modelVersion>4.0.0</modelVersion>
+	<packaging>ear</packaging>
+	<artifactId>sample-ear</artifactId>
+
+	<build>
+		<finalName>sampleapp</finalName>
+		<plugins>
+			<!--Ear plugin -creating the ear - watch out skinny WARS!-->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-ear-plugin</artifactId>
+				<!--<version>2.10.1</version>-->
+				<configuration>
+					<finalName>sampleapp</finalName>
+					<!--
+						defaultJavaBundleDir:所有库定义的地方（除了包含ear的顶层模块，通常也包会含ear的’lib’子文件夹）。
+					-->
+					<!--<defaultLibBundleDir>lib/</defaultLibBundleDir>-->
+					<defaultJavaBundleDir>lib/</defaultJavaBundleDir>
+					<!--
+						什么是顶层模块？它实际上是，将会打包在ear中的jar包和wars包，而且将会被看成是一等公民。
+						正如你知道的，我们定义了两个顶层模块，sample-web和sample-services。
+					-->
+					<!--
+						skinnyWars:
+						当该属性启用时，我们会对war项目中引用的第三方库打包时执行一个确定的模型。简单来说，
+						我们的war档案不会包含任何WEB-INF\lib文件夹中定义依赖的外部函数库。
+						和这些libs相反，它们将在ear级’defaultJavaBundleDir‘路径上打包。
+					-->
+					<skinnyWars>true</skinnyWars>
+					<modules>
+						<webModule>
+							<groupId>gr.javapapo</groupId>
+							<artifactId>sample-web</artifactId>
+							<!--要加这2个属性，不然没法工作
+							<version>${project.version}</version>
+							<type>war</type>
+							-->
+						</webModule>
+						<ejbModule>
+							<!--sample-services的组id-->
+							<groupId>gr.javapapo</groupId>
+							<artifactId>sample-services</artifactId>
+							<!--<version>${project.version}</version>-->
+							<!--<type>ejb</type>-->
+						</ejbModule>
+					</modules>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	<!-- our in app dependencies-->
+	<dependencies>
+		<dependency>
+			<groupId>gr.javapapo</groupId>
+			<artifactId>sample-web</artifactId>
+			<version>${project.version}</version>
+			<type>war</type>
+		</dependency>
+
+		<dependency>
+			<groupId>gr.javapapo</groupId>
+			<artifactId>sample-services</artifactId>
+			<version>${project.version}</version>
+			<type>ejb</type>
+		</dependency>
+	</dependencies>
+
+</project>
