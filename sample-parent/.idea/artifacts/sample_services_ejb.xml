@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="ejb-jar" name="sample-services:ejb">
-    <output-path>$PROJECT_DIR$/sample-services/target</output-path>
-    <root id="archive" name="sample-services-0.0.1-SNAPSHOT.jar">
-      <element id="artifact" artifact-name="sample-services:ejb exploded" />
-    </root>
-  </artifact>
-</component>

@@ -1,9 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" name="charset">
-    <output-path>$PROJECT_DIR$/out/artifacts/charset</output-path>
-    <root id="archive" name="charset.jar">
-      <element id="file-copy" path="D:/Personal/Desktop/chardet.jar" />
-      <element id="extracted-dir" path="D:/Personal/Desktop/chardet.jar" path-in-jar="/" />
-    </root>
-  </artifact>
-</component>
